@@ -21,7 +21,7 @@ const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
   const router = useRouter()
   const { toast } = useToast()
   const { id } = configuration
-  const {isAuthenticated} = useKindeBrowserClient();
+  const {isAuthenticated, user} = useKindeBrowserClient();
   
   const [isLoginModalOpen, setIsLoginModalOpen] = useState<boolean>(false)
 
@@ -58,7 +58,7 @@ const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
   })
 
   const handleCheckout = () => {
-    if (isAuthenticated) {
+    if (isAuthenticated || user) {
       // create payment session
       createPaymentSession({ configId: id })
     } else {
