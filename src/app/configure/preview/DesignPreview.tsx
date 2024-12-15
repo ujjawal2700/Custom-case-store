@@ -22,6 +22,8 @@ const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
   const { toast } = useToast()
   const { id } = configuration
   const {isAuthenticated, user} = useKindeBrowserClient();
+  console.log(isAuthenticated)
+  console.log(user)
   
   const [isLoginModalOpen, setIsLoginModalOpen] = useState<boolean>(false)
 

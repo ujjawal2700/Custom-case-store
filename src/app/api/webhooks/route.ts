@@ -15,7 +15,7 @@ async function POST(req: Request){
 
     const event = stripe.webhooks.constructEvent(body, signature, process.env.STRIPE_WEBHOOK_SECRET!)
 
-    if(event.type === "checkout.session.async_payment_succeeded"){
+    if(event.type === "checkout.session.completed"){
       if(!event.data.object.customer_email){
         return new Error("Missing customer email.")
       }
